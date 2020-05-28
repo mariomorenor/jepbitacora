@@ -1,6 +1,12 @@
 <template>
   <div>
-      holi
+      <div class="container">
+        <div class="row mt-5">
+          <div class="col">
+            <form action="/observacion" method="post"></form>
+          </div>
+        </div>
+      </div>
   </div>
 </template>
 

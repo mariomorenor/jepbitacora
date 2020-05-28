@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Cajero;
 use App\Zona;
+use Illuminate\Database\QueryException as Exc;
 use Illuminate\Http\Request;
 
 class CajeroController extends Controller
@@ -20,10 +21,18 @@ class CajeroController extends Controller
 
     public function store(Request $request)
     {
-        $cajero = new Cajero;
-        $cajero->fill($request->all());
-        $cajero->save();
-        return response(200);
+        // return $request;
+        try {
+            $cajero = new Cajero;
+            $cajero->fill($request->all());
+            $cajero->save();
+            return response(200);
+        } catch (Exc $ex ) {
+            
+            return response($ex->getCode(),510);
+    
+        }
+       
     }
 
     public function show(Cajero $cajero)
@@ -40,14 +49,19 @@ class CajeroController extends Controller
         // return $request;
         $cajero->fill($request->all());
         $cajero->save();
-        return $cajero;
+    
         return response(200);
     }
 
     public function destroy(Cajero $cajero)
     {   
-        return $cajero;
-        // $cajero->delete();
-        // return response(200);
+        try {
+             $cajero->delete();
+            return response('',200);
+        } catch (Exc $ex) {
+            
+            return response($ex,500);
+        }
+       
     }
 }

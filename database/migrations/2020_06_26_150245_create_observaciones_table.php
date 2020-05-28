@@ -15,7 +15,7 @@ class CreateObservacionesTable extends Migration
     {
         Schema::create('observaciones', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('cajero_id')->constrained();
+            $table->foreignId('cajero_id')->constrained()->onDelete('cascade');
             $table->string('descripcion');
             $table->date('fecha');
             $table->time('marcacion_1');

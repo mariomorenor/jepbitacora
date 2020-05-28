@@ -16,9 +16,7 @@ const store = new Vuex.Store({
 
     },
     mutations: {
-        msgOperacionCorrecta(state){
-           
-        }
+    
     }
 });
 

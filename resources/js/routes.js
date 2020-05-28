@@ -32,7 +32,7 @@ export default new Router({
             path: '/cajeros/editar/:cajero_id',
             name: 'editar_cajero',
             props:true,
-            components: require('./views/cajeros/create')
+            components: require('./views/cajeros/update')
         },
         // {
         //     path: '*',

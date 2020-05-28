@@ -2,37 +2,22 @@
   <div>
       <div id="content" class="container">
           <div class="row">
-              <h2 class="mx-auto mb-2">Detalles Cajero</h2>
+              <h2 class="mx-auto mb-2">Nuevo Cajero</h2>
           </div>
           <div class="row">
               <div class="col-5 mx-auto">
-                  <form :action="'/cajeros/'+cajero.id" id="form_actualizar_cajero" class="shadow bg-white border border-dark rounded p-4">
+                  <form action="#" id="form_nuevo_cajero" class="shadow bg-white border border-dark rounded p-4">
                       <div class="form-group">
                           <label for="codigo">Código</label>
-                          <input type="text" name="codigo" readonly class="form-control" v-model="cajero.codigo">
+                          <input type="text" name="codigo" placeholder="Ingrese Solo Números" class="form-control" v-model="codigo">
                       </div>
-                      <div class="form-group" v-if="!edit_mode">
-                          <label for="zona">Zona</label>
-                          <div class="d-flex">
-                              <input type="text" class="form-control" :readonly="!edit_mode"
-                                  :value="cajero_zona.numero+' - ' + cajero_zona.descripcion ">
-                              <button @click="mode_edit(false)" type="button" class="btn btn-primary btn-sm ml-3">
-                                  <i  class="fas fa-edit fa-lg"></i>
-                              </button>
-                          </div>
-                      </div>
-                      <div v-else-if="edit_mode" class="form-group">
+                      <div class="form-group">
                           <label for="codigo">Zona</label>
                           <div class="d-flex">
                               <select name="zona_id" class="form-control" id="zona">
                                   <option v-for="zona in zonas" :key="zona.id" :value="zona.id">{{zona.numero}} -
                                       {{zona.descripcion}}</option>
                               </select>
-                              <button type="button" @click="mode_edit(true)" class="btn btn-danger ml-3">
-                                
-                                    <i  class="fas fa-window-close fa-lg"></i>
-                                    
-                              </button>
                               <button type="button" data-toggle="modal" data-target="#modal_agregar_zona"
                                   data-backdrop="static" class="btn btn-primary ml-1 ">
                                   <i class="fas fa-plus-circle fa-lg"></i>
@@ -41,10 +26,10 @@
                       </div>
                       <div class="form-group">
                           <label for="codigo">Dirección</label>
-                          <textarea name="direccion" v-model="cajero.direccion" id="direccion" cols="30" rows="3" class="form-control"></textarea>
+                          <textarea name="direccion" placeholder="Ingrese La Dirección del Cajero..." v-model="direccion" id="direccion" cols="30" rows="3" class="form-control"></textarea>
                       </div>
                       <div class="form-group">
-                          <button type="button" @click="actualizarCajero(cajero.id)" class="btn btn-success btn-block shadow">ACTUALIZAR</button>
+                          <button type="button" :disabled="codigo == '' ? true:false" @click="agregarCajero()" class="btn btn-success btn-block shadow">ACTUALIZAR</button>
                       </div>
                   </form>
               </div>
@@ -91,26 +76,20 @@
 export default {
   data() {
     return {
-      cajero: '',
+     
       zonas:[],
-      cajero_zona: '',
       zona_numero:'',
       zona_descripcion:'',
-      edit_mode: false
+      codigo:'',
+      direccion:'',
+
     }
   },
   created(){
-    this.obtenerCajero();
+    this.obtenerZonas();
   },
   methods: {
-      obtenerCajero(){
-              axios.get('/cajeros/'+this.$route.params.cajero_id)
-            .then(({data})=>{
-              // console.log(data)
-              this.cajero = data.cajero;
-              this.cajero_zona = data.zona;
-            });
-      },
+
       obtenerZonas(){
                       axios.get('/zonas')
             .then(({data})=>{
@@ -134,35 +113,46 @@ export default {
                 });
       },
       resetInputModal(){
-          this.zona_numero = ''
-          this.zona_descripcion = ''
+          this.zona_numero = '';
+          this.zona_descripcion = '';
+                this.codigo='';
+      this.direccion='';
       },
-      mode_edit(mode){
-        this.edit_mode = !mode;
-        this.obtenerZonas();
-      },
-      actualizarCajero(cajero_id){
+      agregarCajero(){
         let that = this;
         $.ajax({
-          type: "put",
-          url: "/cajeros/"+cajero_id,
-          data: $('#form_actualizar_cajero').serialize(),
+          type: "post",
+          url: "/cajeros",
+          data: $('#form_nuevo_cajero').serialize(),
           success: function (response) {
-            // console.log(response)
-            Swal.fire({
-              icon:'success',
-              title:'La Operación Se Realizó Correctamente!',
-              timer:'1500'
-            })
-            
+            console.log(response)
+            if(response == 200){
+              that.resetInputModal();
+              Swal.fire({
+                icon: 'success',
+                title: 'Operación Realizada Correctamente!',
+                timer: 1000
+              })
+            }
           },
-          error: function(error){
-            console.log(error)
+          error: function(e){
+            // console.log(e)
+            if (e.responseText == '23000') {
+              Swal.fire({
+                icon: 'error',
+                title: 'Operación Fallida!',
+                text: 'El código de cajero ya existe o los campos están vacíos.'
+              })
+            }else if (e.responseText === 'HY000') {
+                Swal.fire({
+                icon: 'error',
+                title: 'Operación Fallida!',
+                text: 'El código No debe contener letras.'
+              })
+            }
           }
         });
       }
-      
-
   }
 }
 </script>
