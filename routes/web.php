@@ -13,6 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
+
+Route::resource('cajeros','CajeroController')->except(['create','edit']);
+Route::resource('zonas','ZonaController')->except(['create','edit']);
+Route::resource('reportes','ObservacionController')->except(['index','destroy','store']);

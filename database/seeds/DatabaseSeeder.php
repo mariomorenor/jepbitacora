@@ -1,5 +1,6 @@
 <?php
 
+use App\Cajero;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -11,6 +12,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UserSeeder::class);
+        $this->call(ZonasTableSeeder::class);
+        $this->call(CajerosTableSeeder::class);
+        $this->call(ObservacionesTableSeeder::class);
+        factory(Cajero::class,100)->create();
     }
 }
