@@ -4,6 +4,9 @@
           <h2>Listado de Cajeros</h2>
           <div class="contenedor_cajeros">
               <div class="row mt-4">
+                <div class="ml-4">
+                  <router-link :to="{name: 'nuevo_cajero'}" class="btn btn-primary  shadow">AGREGAR</router-link>
+                </div>
                   <div class="col-3 ml-auto">
                       <input type="text" class="form-control" placeholder="Buscar...">
                   </div>
