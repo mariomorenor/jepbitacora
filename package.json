@@ -26,6 +26,7 @@
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.13.0",
         "bootstrap-table": "^1.16.0",
+        "moment": "^2.26.0",
         "sweetalert2": "^9.13.2",
         "vue-infinite-loading": "^2.4.5",
         "vue-router": "^3.2.0",

@@ -8,7 +8,7 @@ Vue.use(Vuex)
 require('@fortawesome/fontawesome-free/js/all')
 Vue.component('sidebar', require('./components/sidebarComponent.vue').default);
 Vue.component('main-app', require('./components/App.vue').default);
-window.freezeHeader = require('freeze/headerFreeze')
+// window.freezeHeader = require('freeze/headerFreeze')
 import router from './routes';
 
 const store = new Vuex.Store({

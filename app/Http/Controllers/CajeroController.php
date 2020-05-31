@@ -13,7 +13,13 @@ class CajeroController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $cajeros = Cajero::with(['zona'])->paginate(4);
+         
+            if($request->sin_paginar){
+                $cajeros = Cajero::all();
+            }else{
+
+                $cajeros = Cajero::with(['zona'])->paginate(4);
+            }
             return $cajeros;
         }
         return redirect('/');

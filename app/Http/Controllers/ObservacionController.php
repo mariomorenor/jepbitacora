@@ -9,8 +9,12 @@ use Illuminate\Http\Request;
 class ObservacionController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
+        if($request->ajax()){
+            $observaciones = Observacion::all();
+            //TODO crear bien la pinche tabla reportes con obseracion pilas
+        }  
         $reporte = Cajero::with(['zona','observacion'])->get();
         return $reporte;
     }
