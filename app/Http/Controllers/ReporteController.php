@@ -12,8 +12,11 @@ class ReporteController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            
-            $reportes =  Reporte::with(['cajero:id,codigo,direccion','observacion:id,nombre'])->get();
+            if ($request->has('desde') && $request->has('hasta') ) {
+                $reportes =  Reporte::whereBetween('fecha',[$request->desde,$request->hasta])->with(['cajero:id,codigo,direccion','observacion:id,nombre'])->get();
+            }else{
+                $reportes =  Reporte::with(['cajero:id,codigo,direccion','observacion:id,nombre'])->get();
+            }
             
             return response()->json([
                 'rows'=>$reportes

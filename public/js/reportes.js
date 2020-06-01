@@ -21,6 +21,8 @@ function buscar(data,text ) {
         
       })
 }
+
+
 // function detallesFormatter(value, row) {
 //     return `<button class="btn detalles btn-primary">Detalles</button>`
 // }

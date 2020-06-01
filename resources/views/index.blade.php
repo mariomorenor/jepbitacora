@@ -8,6 +8,8 @@
 
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <title>Jep Bitacora</title>
+        
+
   </head>
   <body>
     
@@ -18,9 +20,7 @@
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/cajeros.js') }}"></script>
     <script src="{{ asset('js/reportes.js') }}"></script>
-    <script src="{{ asset('js/tableExport.min.js') }}"></script>
-    <script src="{{ asset('js/jspdf.min.js') }}"></script>
-    <script src="{{ asset('js/bootstrap-table-export.min.js') }}"></script>
     @stack('scripts')
+
     </body>
 </html>
