@@ -22,4 +22,5 @@ Route::get('/', function () {
 
 Route::resource('cajeros','CajeroController')->except(['create','edit']);
 Route::resource('zonas','ZonaController')->except(['create','edit']);
-Route::resource('reportes','ObservacionController')->except(['destroy','store']);
+Route::resource('observaciones','ObservacionController')->only(['index','store','destroy']);
+Route::resource('reportes','ReporteController')->only(['index','store','destroy','show']);

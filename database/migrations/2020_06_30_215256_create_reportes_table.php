@@ -15,6 +15,11 @@ class CreateReportesTable extends Migration
     {
         Schema::create('reportes', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('cajero_id')->constrained()->onDelete('cascade');
+            $table->foreignId('observacion_id')->constrained('observaciones')->onDelete('no action');
+            $table->date('fecha');
+            $table->time('marcacion_1');
+            $table->time('marcacion_2')->nullable();
             $table->timestamps();
         });
     }

@@ -14,25 +14,34 @@ class ObservacionesTableSeeder extends Seeder
     public function run()
     {
         Observacion::create([
-            'cajero_id'=>1,
-            'descripcion'=>'Limpieza',
-            'fecha'=>Carbon::now()->toDateString(),
-            'marcacion_1'=>Carbon::now()->toTimeString(),
-            'marcacion_2'=>Carbon::now()->toTimeString(),
+            'nombre'=>'Limpieza',
         ]);
         Observacion::create([
-            'cajero_id'=>2,
-            'descripcion'=>'Arqueo',
-            'fecha'=>Carbon::now()->toDateString(),
-            'marcacion_1'=>Carbon::now()->toTimeString(),
-            'marcacion_2'=>Carbon::now()->toTimeString(),
+            'nombre'=>'Otra Observación',
         ]);
         Observacion::create([
-            'cajero_id'=>3,
-            'descripcion'=>'no sé xD',
-            'fecha'=>Carbon::now()->toDateString(),
-            'marcacion_1'=>Carbon::now()->toTimeString(),
-            'marcacion_2'=>Carbon::now()->toTimeString(),
+            'nombre'=>'Otra Observación Más',
         ]);
+        // Observacion::create([
+        //     'cajero_id'=>1,
+        //     'descripcion'=>'Limpieza',
+        //     'fecha'=>Carbon::now()->toDateString(),
+        //     'marcacion_1'=>Carbon::now()->toTimeString(),
+        //     'marcacion_2'=>Carbon::now()->toTimeString(),
+        // ]);
+        // Observacion::create([
+        //     'cajero_id'=>2,
+        //     'descripcion'=>'Arqueo',
+        //     'fecha'=>Carbon::now()->toDateString(),
+        //     'marcacion_1'=>Carbon::now()->toTimeString(),
+        //     'marcacion_2'=>Carbon::now()->toTimeString(),
+        // ]);
+        // Observacion::create([
+        //     'cajero_id'=>3,
+        //     'descripcion'=>'no sé xD',
+        //     'fecha'=>Carbon::now()->toDateString(),
+        //     'marcacion_1'=>Carbon::now()->toTimeString(),
+        //     'marcacion_2'=>Carbon::now()->toTimeString(),
+        // ]);
     }
 }

@@ -13,10 +13,8 @@ class ObservacionController extends Controller
     {
         if($request->ajax()){
             $observaciones = Observacion::all();
-            //TODO crear bien la pinche tabla reportes con obseracion pilas
+            return $observaciones;
         }  
-        $reporte = Cajero::with(['zona','observacion'])->get();
-        return $reporte;
     }
 
     public function store(Request $request)
@@ -24,7 +22,7 @@ class ObservacionController extends Controller
         $reporte = new Observacion;
         $reporte->fill($request->all());
         $reporte->save();
-        return response(200);
+        return response('',200);
     }
 
     public function destroy(Observacion $observacion)
