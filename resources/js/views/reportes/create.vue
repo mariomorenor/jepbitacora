@@ -176,7 +176,7 @@ methods:{
         obtenerObservaciones(){
             axios.get('observaciones')
                     .then(({data})=>{
-                        console.log(data);
+                        // console.log(data);
                         this.observaciones = data;
 
                     })

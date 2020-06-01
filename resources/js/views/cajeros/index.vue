@@ -10,7 +10,6 @@
                 </div>
                   <div class="col-4 ml-auto" >
                     <div class="d-flex">
-
                       <button @click="changeType()" class="btn btn-primary mr-2">Buscar</button>
                       <input @keyup="changeType()" v-model="codigo" type="text" class="form-control" placeholder="Buscar...">
                     </div>
