@@ -22,7 +22,7 @@ class ReporteController extends Controller
                 'rows'=>$reportes
             ]);
         }
-        return  Reporte::with(['cajero:id,codigo,direccion','observacion:id,nombre'])->get();
+        return redirect('/');
     }
 
    
@@ -36,14 +36,5 @@ class ReporteController extends Controller
         }
         $nuevo_reporte->save();
         return response('',200);
-    }
-
-    public function show($reporte_id)
-    {  
-    }
-
-    public function destroy(Reporte $reporte)
-    {
-        //
     }
 }
