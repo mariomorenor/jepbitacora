@@ -2,7 +2,7 @@
   <div>
       <div class="container">
         <div class="row mt-5">
-          <h1 class="mt-5 mx-auto">Reportes</h1>
+          <h1 class="my-4 mx-auto">Reportes</h1>
         </div>
         <div class="row">
           <div class="col mx-auto">

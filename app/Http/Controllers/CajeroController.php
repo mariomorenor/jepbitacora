@@ -17,8 +17,8 @@ class CajeroController extends Controller
             if($request->sin_paginar){
                 $cajeros = Cajero::all();
             }else{
-
-                $cajeros = Cajero::with(['zona'])->paginate(4);
+                
+                $cajeros = Cajero::where('codigo','like',"$request->codigo%")->with(['zona'])->paginate(4);
             }
             return $cajeros;
         }

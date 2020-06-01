@@ -18,9 +18,6 @@
     </div>
     
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/cajeros.js') }}"></script>
     <script src="{{ asset('js/reportes.js') }}"></script>
-    @stack('scripts')
-
     </body>
 </html>

@@ -4,11 +4,16 @@
           <h2>Listado de Cajeros</h2>
           <div class="contenedor_cajeros">
               <div class="row mt-4">
-                <div class="ml-4">
+                
+                <div class="ml-4 col-3">
                   <router-link :to="{name: 'nuevo_cajero'}" class="btn btn-primary  shadow">AGREGAR</router-link>
                 </div>
-                  <div class="col-3 ml-auto">
-                      <input type="text" class="form-control" placeholder="Buscar...">
+                  <div class="col-4 ml-auto" >
+                    <div class="d-flex">
+
+                      <button @click="changeType()" class="btn btn-primary mr-2">Buscar</button>
+                      <input @keyup="changeType()" v-model="codigo" type="text" class="form-control" placeholder="Buscar...">
+                    </div>
                   </div>
               </div>
               <div class="row">
@@ -37,7 +42,7 @@
           </div>
       </div>
 
-      <infinite-loading @infinite="infiniteHandler"></infinite-loading>
+      <infinite-loading :identifier="infiniteId" @infinite="infiniteHandler"></infinite-loading>
   </div>
 </template>
 
@@ -51,9 +56,10 @@ export default {
   },
     data() {
         return {
-       
+              infiniteId: +new Date(),
             cajeros: [],
-            page:1
+            page:1,
+            codigo:'',
             
         }
     },
@@ -64,7 +70,8 @@ export default {
       infiniteHandler($state){
           axios.get('/cajeros',{
             params:{
-              page: this.page
+              page: this.page,
+              codigo:this.codigo
             }
           }).then(({data})=>{
             if(data.data.length){
@@ -76,7 +83,12 @@ export default {
         }
             
           });
-      }
+      },
+          changeType() {
+      this.page = 1;
+      this.cajeros = [];
+      this.infiniteId += 1;
+    },
       
     }
 }
