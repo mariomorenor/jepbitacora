@@ -6,6 +6,10 @@ function direccionFormatter(value,row) {
 }
 
 function observacionFormatter(value,row) {
+    //  console.log(row)
+    if (row.observacion.nombre == 0) {
+        return '';
+    }
     return row.observacion.nombre
     
 }
@@ -22,13 +26,25 @@ function buscar(data,text ) {
       })
 }
 
+function detallesFormatter(value,row) {
+    
+    return   ` <button class="btnDelete btn btn-danger">
+                <i class="fa fa-trash-alt fa-lg"></i>
+                </button>`
+}
+function observacionTableFormatterO(value,row, index) {
+    if (index == 0) {
+        return 'Sin Especificar'
+    }
+    return value;
+}
 
-// function detallesFormatter(value, row) {
-//     return `<button class="btn detalles btn-primary">Detalles</button>`
-// }
 
-
-
-
-
-// data-toggle="modal" data-target="#modal_detalles_reporte"
+function detallesFormatterO(value,row,index) {
+    if(index == 0){
+        return ''
+    }
+    return   ` <button class="btnDeleteO btn btn-danger">
+                <i class="fa fa-trash-alt fa-lg"></i>
+                </button>`
+}

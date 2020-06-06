@@ -23,11 +23,11 @@
                   <thead class="bg-success">
                     <tr>
                       <th data-align="center" data-width="10" data-field="cajero" data-events="operateEvents" data-sortable="true" data-formatter="cajeroFormatter">Cajero</th>
-                      <th data-field="direccion" data-formatter="direccionFormatter">Direccion</th>
+                      <th data-field="direccion" data-width="420" data-formatter="direccionFormatter">Direccion</th>
                       <th data-field="marcacion_1" data-align="center" data-width="10" >Marcacion 1</th>
                       <th data-field="marcacion_2" data-align="center" data-width="10" >Marcacion 2</th>
-                      <!-- <th data-field="observacion" data-formatter="observacionFormatter">Observación</th> -->
                       <th data-field="fecha" data-sortable="true" data-formatter="fechaFormatter">Fecha</th>
+                      <th data-field="observacion" data-formatter="observacionFormatter">Observación</th>
                     </tr>
                   </thead>
                 </table>
@@ -45,7 +45,6 @@ window.operateEvents={
     app.__vue__.$router.push('/reportes/'+row.id)
   },
   'click .codigo_link': function (e, value,row ,index) {
-    console.log(value);
     app.__vue__.$router.push('/cajeros/editar/'+row.cajero.id)
     }
 }
@@ -81,7 +80,7 @@ export default {
         var table = $('#table');
         table.bootstrapTable('refreshOptions',{
             url: "/reportes",
-             queryParams:{}
+             queryParams:{},
         });
       }
     },
@@ -90,7 +89,10 @@ export default {
         table.bootstrapTable({
             url: "/reportes",
             exportTypes: ['excel', 'pdf'],
-            // exportDataType: $(this).val(),
+            responseHandler: function(res){
+              // console.log(res)
+              return res;
+            }
         });
 
     },

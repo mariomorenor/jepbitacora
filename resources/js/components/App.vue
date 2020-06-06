@@ -12,6 +12,7 @@
                     <router-link class="btn btn-primary" :to="{name:'nuevo_registro'}">Nuevo Registro</router-link>
                     <router-link class="btn btn-primary " :to="{name:'cajeros'}">Cajeros</router-link>
                     <router-link class="btn btn-primary" :to="{name:'reportes'}">Reportes</router-link>
+                    <router-link class="btn btn-primary" :to="{name:'zona'}">Zonas</router-link>
                     </div>
               </div>
           </div>

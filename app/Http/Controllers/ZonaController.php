@@ -8,9 +8,16 @@ use Illuminate\Http\Request;
 class ZonaController extends Controller
 {
 
-    public function index()
-    {
+    public function index(Request $request)
+    {   
         $zona = Zona::all();
+        if ($request->ajax()) {
+            return response()->json([
+                'rows'=>$zona
+            ]);
+
+        }
+      
         return $zona;
     }
 

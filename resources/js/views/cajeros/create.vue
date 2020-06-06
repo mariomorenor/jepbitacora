@@ -93,8 +93,8 @@ export default {
       obtenerZonas(){
                       axios.get('/zonas')
             .then(({data})=>{
-              // console.log(data)
-              this.zonas = data;
+              // console.log(data.rows)
+              this.zonas = data.rows;
             });
       },
       agregarZona() {

@@ -17,7 +17,7 @@ class CreateCajerosTable extends Migration
             $table->id();
             $table->bigInteger('codigo')->unique();
             $table->string('direccion');
-            $table->foreignId('zona_id')->constrained();
+            $table->foreignId('zona_id')->constrained()->onDelete('no action');
             $table->string('descripcion')->nullable();
             $table->timestamps();
         });

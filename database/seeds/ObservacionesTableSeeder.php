@@ -14,6 +14,9 @@ class ObservacionesTableSeeder extends Seeder
     public function run()
     {
         Observacion::create([
+            'nombre'=>'',
+        ]);
+        Observacion::create([
             'nombre'=>'Limpieza',
         ]);
         Observacion::create([

@@ -14,7 +14,7 @@ require('tb/libs/jsPDF-AutoTable/jspdf.plugin.autotable')
 require('bootstrap-table/dist/extensions/export/bootstrap-table-export')
 
 window.moment = require('moment');
-require('moment/locale/es')
+require('moment/locale/es');
 
 Vue.use(Vuex)
 require('@fortawesome/fontawesome-free/js/all')

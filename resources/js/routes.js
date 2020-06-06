@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+
 Vue.use(Router);
 
 export default new Router({
@@ -43,6 +44,11 @@ export default new Router({
             path: '/reportes/show/:reporte_id',
             components: require('./views/reportes/show'),
             props:true,
+        },
+        {
+            path: '/zonas',
+            name: 'zona',
+            components: require('./views/zonas/index'),
         },
         // {
         //     path: '*',

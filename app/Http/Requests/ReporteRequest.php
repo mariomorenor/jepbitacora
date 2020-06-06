@@ -25,9 +25,9 @@ class ReporteRequest extends FormRequest
     {
         return [
             'hora_1'=>'required|numeric|min:0|max:23',
-            'minuto_1'=>'required|numeric|min:0|max:23',
+            'minuto_1'=>'required|numeric|min:0|max:59',
             'hora_2'=>'required_if:marc_2_check,"on"|numeric|min:0|max:23',
-            'minuto_2'=>'required_if:marc_2_check,"on"|numeric|min:0|max:23',
+            'minuto_2'=>'required_if:marc_2_check,"on"|numeric|min:0|max:59',
         ];
     }
 }

@@ -25,9 +25,9 @@ class ObservacionController extends Controller
         return response('',200);
     }
 
-    public function destroy(Observacion $observacion)
+    public function destroy(Observacion $observacione)
     {
-        $observacion->delete();
+        $observacione->delete();
         return response(200);
     }
 }

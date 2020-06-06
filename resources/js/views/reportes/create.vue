@@ -18,13 +18,13 @@
                                   <div class="">
                                       <div class="d-flex mb-2 pr-5">
                                           <label class="my-auto" for="Hora">Hora:</label>
-                                          <input required type="number" placeholder="Ingrese Solo Números" name="hora_1" min="0"
+                                          <input type="number" placeholder="Ingrese Solo Números" name="hora_1" min="0"
                                               max="23" step="1" id="hora_1" v-model="hora_1" class="form-control ml-2">
                                       </div>
                                       <div class="d-flex  pr-5">
                                           <label class="my-auto" for="Minutos">Minutos:</label>
-                                          <input required type="number" name="minuto_1" placeholder="Ingrese Solo Números"
-                                              min="0" max="60" step="1" v-model="minuto_1" id="minuto_1" class="form-control ml-2">
+                                          <input type="number" name="minuto_1" placeholder="Ingrese Solo Números"
+                                              min="0" max="59" step="1" v-model="minuto_1" id="minuto_1" class="form-control ml-2">
                                       </div>
                                   </div>
                               </div>
@@ -36,12 +36,12 @@
                                   <div class="" v-if="existeMarcacion2">
                                       <div class="d-flex mb-2 pr-5">
                                           <label class="my-auto" for="Hora">Hora:</label>
-                                          <input required type="number" placeholder="Ingrese Solo Números" name="hora_2" min="0"
+                                          <input type="number" placeholder="Ingrese Solo Números" name="hora_2" min="0"
                                               max="23" step="1" id="hora_2" v-model="hora_2" class="form-control ml-2">
                                       </div>
                                       <div class="d-flex  pr-5">
                                           <label class="my-auto" for="Minutos">Minutos:</label>
-                                          <input required type="number" name="minuto_2" placeholder="Ingrese Solo Números"
+                                          <input type="number" name="minuto_2" placeholder="Ingrese Solo Números"
                                               min="0" max="60" step="1" v-model="minuto_2" id="minuto_2" class="form-control ml-2">
                                       </div>
                                   </div>
@@ -128,8 +128,7 @@
 </template>
 
 <script>
-import moment from 'moment';
-require('moment/locale/es')
+
 export default {
 data() {
   return {

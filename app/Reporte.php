@@ -27,7 +27,7 @@ class Reporte extends Model
     }
     public function observacion()
     {
-        return $this->belongsTo(observacion::class,'observacion_id');
+        return $this->belongsTo(observacion::class);
     }
 
 }

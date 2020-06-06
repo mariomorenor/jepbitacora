@@ -6,6 +6,7 @@ use App\Http\Requests\ReporteRequest;
 use App\Reporte;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Database\QueryException as Exc;
 
 class ReporteController extends Controller
 {
@@ -27,14 +28,16 @@ class ReporteController extends Controller
 
    
     public function store(ReporteRequest $request)
-    {
-        $nuevo_reporte = new Reporte;
-        $nuevo_reporte->fill($request->all());
-        $nuevo_reporte->marcacion_1 = Carbon::createFromTime($request->hora_1,$request->minuto_1);
-        if ($request->has('hora_2') && $request->has('minuto_2') ) {
-            $nuevo_reporte->marcacion_2 = Carbon::createFromTime($request->hora_2,$request->minuto_2);
-        }
-        $nuevo_reporte->save();
-        return response('',200);
+    {   
+            $nuevo_reporte = new Reporte;
+            $nuevo_reporte->fill($request->all());
+            $nuevo_reporte->marcacion_1 = Carbon::createFromTime($request->hora_1,$request->minuto_1);
+            if ($request->has('hora_2') && $request->has('minuto_2') ) {
+                $nuevo_reporte->marcacion_2 = Carbon::createFromTime($request->hora_2,$request->minuto_2);
+            }
+            $nuevo_reporte->save();
+            return response('',200);
+      
+   
     }
 }
