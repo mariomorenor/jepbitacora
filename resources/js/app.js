@@ -8,10 +8,10 @@ window.Swal = require('sweetalert2');
 window.bootstrapTable = require('bootstrap-table');
 require('bootstrap-table/src/locale/bootstrap-table-es-ES');
 
-require('tableexport.jquery.plugin/tableExport')
-window.jsPDF = require('tableexport.jquery.plugin/libs/jsPDF/jspdf')
-require('tb/libs/jsPDF-AutoTable/jspdf.plugin.autotable')
-require('bootstrap-table/dist/extensions/export/bootstrap-table-export')
+// require('tableexport.jquery.plugin/tableExport')
+// window.jsPDF = require('tableexport.jquery.plugin/libs/jsPDF/jspdf')
+// require('tb/libs/jsPDF-AutoTable/jspdf.plugin.autotable')
+// require('bootstrap-table/dist/extensions/export/bootstrap-table-export')
 
 window.moment = require('moment');
 require('moment/locale/es');

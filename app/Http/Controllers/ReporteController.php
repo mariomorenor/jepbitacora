@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ReporteRequest;
 use App\Reporte;
+use Barryvdh\DomPDF\PDF;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException as Exc;
@@ -37,7 +38,19 @@ class ReporteController extends Controller
             }
             $nuevo_reporte->save();
             return response('',200);
-      
-   
+    }
+
+    public function PDF(Request $request)
+    {
+        if ($request->has('desde') && $request->has('hasta') && $request->desde != null && $request->hasta !=null) {
+            
+            $reportes =  Reporte::whereBetween('fecha',[$request->desde,$request->hasta])->with(['cajero:id,codigo,direccion','observacion:id,nombre'])->get();
+        }else{
+            $reportes =  Reporte::with(['cajero:id,codigo,direccion','observacion:id,nombre'])->get();
+        }
+        // return $reportes;
+        // return $reportes;
+        $pdf = \PDF::loadView('reportePDF',compact('reportes'));
+        return $pdf->download('Reporte'.Carbon::now()->toDateString().'.pdf');
     }
 }

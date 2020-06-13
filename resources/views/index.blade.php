@@ -8,7 +8,11 @@
 
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <title>Jep Bitacora</title>
-        
+    @php
+    date_default_timezone_set ('America/Guayaquil');
+    setlocale(LC_ALL,"es_ES");
+
+  @endphp
 
   </head>
   <body>
